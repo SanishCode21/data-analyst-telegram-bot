@@ -1,0 +1,27 @@
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784910516.1978295}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\": 30, \"log_url\": \"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784910524.7433293}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784964427.288064}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\": 30, \"log_url\": \"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784964433.883882}
+{"type": "incoming", "chat_id": 1413555507, "text": "Hello", "timestamp": 1784964556.9325404}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"message\": \"Hello\", \"log_url\": \"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784964563.5925505}
+{"type": "incoming", "chat_id": 1413555507, "text": "Where is the capital of france?", "timestamp": 1784981928.0106823}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":\"Paris, in north-central France on the River Seine (approx. 48.8566° N, 2.3522° E).\"}", "timestamp": 1784981935.7164557}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":\"Paris, in north-central France on the River Seine (approx. 48.8566° N, 2.3522° E).\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784981935.7164557}
+{"type": "incoming", "chat_id": 1413555507, "text": "hello", "timestamp": 1784981986.4979036}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":\"Hello! How can I help you today?\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784981990.743505}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":\"Hello! How can I help you today?\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784981990.7445006}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784982146.8362997}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":\"15% of 200 is 30.\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784982150.629192}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":\"15% of 200 is 30.\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784982150.6311915}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784983108.976798}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":\"15% of 200 is 30.\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784983112.1342428}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":\"15% of 200 is 30.\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784983112.1342428}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200? Reply ONLY with this JSON object and nothing else: {\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784984859.7167501}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784984863.1818821}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784984863.1818821}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784985155.7220051}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784985164.0669055}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784985164.0669055}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784985365.8187902}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784985374.3541105}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784985374.3541105}
