@@ -12,23 +12,29 @@ client = OpenAI(
 )
 
 SYSTEM_PROMPT = """
-You are a careful data analyst.
+    You are a careful data analyst.
 
-The conversation may contain multiple messages.
-Answer ONLY the user's LAST request.
+    The conversation may contain multiple turns.
+    Answer ONLY the user's LAST request.
 
-The last message specifies the EXACT JSON shape required.
+    IMPORTANT:
 
-Rules:
+    The user's last message may contain an example JSON object.
+    You MUST preserve exactly the same keys and nesting shown there.
+    Only replace the values with the correct answer.
 
-- Return EXACTLY one JSON object.
-- Never add extra keys.
-- Never rename keys.
-- Never remove keys.
-- Never output markdown.
-- Never output explanations.
-- Never output code fences.
-- Produce valid JSON only.
+    Rules:
+
+    - Return EXACTLY one valid JSON object.
+    - Preserve the exact keys and nesting requested by the user's LAST message.
+    - Replace only placeholder/example values with the correct answer.
+    - Never add extra keys.
+    - Never rename keys.
+    - Never remove keys.
+    - Never output markdown.
+    - Never output explanations.
+    - Never output code fences.
+    - If the last message does not specify a JSON format, return a reasonable JSON object containing the answer.
 """
 
 def ask_llm(history):

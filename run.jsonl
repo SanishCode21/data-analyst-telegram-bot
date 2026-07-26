@@ -25,3 +25,69 @@
 {"type": "incoming", "chat_id": 1413555507, "text": "What is 15% of 200?", "timestamp": 1784985365.8187902}
 {"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784985374.3541105}
 {"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":30,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1784985374.3541105}
+{"type": "incoming", "chat_id": 1413555507, "text": "what is 5% of 300?", "timestamp": 1785034326.6305447}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":15}", "timestamp": 1785034336.9518003}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":15,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785034336.9518003}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200?", "timestamp": 1785034691.0076017}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785034695.697955}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785034695.6997635}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200?", "timestamp": 1785035443.2461684}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785035446.965192}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785035446.965192}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200?", "timestamp": 1785036101.232002}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785036105.1627786}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785036105.1672776}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200?", "timestamp": 1785036449.6403813}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785036452.249727}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785036452.249727}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200?", "timestamp": 1785036883.7783186}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785036886.6102884}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785036886.6102884}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200? Reply ONLY with this JSON object and nothing else: {\"result\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037041.9734633}
+{"type": "dataset_error", "chat_id": 1413555507, "error": "404 Client Error: Not Found for url: https://your-domain.com/logs/run.jsonl%22%7D", "timestamp": 1785037043.548876}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037046.874939}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037046.8764386}
+{"type": "incoming", "chat_id": 1413555507, "text": "Hello", "timestamp": 1785037465.809462}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":\"Hello\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037474.1583278}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":\"Hello\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037474.1650097}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 25% of 400?\nReply ONLY with\n{\"answer\":0,\"log_url\":\"...\"}", "timestamp": 1785037512.853577}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":100,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037517.1411357}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":100,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037517.1411357}
+{"type": "incoming", "chat_id": 1413555507, "text": "hello", "timestamp": 1785037528.2669373}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":\"Hello\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037534.111284}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":\"Hello\",\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037534.113415}
+{"type": "incoming", "chat_id": 1413555507, "text": "Use this dataset:\nhttps://people.sc.fsu.edu/~jburkardt/data/csv/airtravel.csv\n\nHow many rows does it have?\n\nReply ONLY with\n\n{\"rows\":0,\"log_url\":\"...\"}", "timestamp": 1785037559.5427895}
+{"type": "dataset_error", "chat_id": 1413555507, "error": "`Import tabulate` failed.  Use pip or conda to install the tabulate package.", "timestamp": 1785037564.937131}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"rows\":13,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037569.0924435}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"rows\":13,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037569.0951207}
+{"type": "incoming", "chat_id": 1413555507, "text": "Reply ONLY with\n\n{\"prediction\":{\"value\":0},\"log_url\":\"...\"}", "timestamp": 1785037612.529}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":13},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037616.5199795}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":13},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785037616.5219903}
+{"type": "incoming", "chat_id": 1413555507, "text": "Reply ONLY with\n\n{\"prediction\":{\"value\":0},\"log_url\":\"...\"}", "timestamp": 1785038091.7445989}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":0},\"log_url\":\"...\"}", "timestamp": 1785038096.3582096}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":0},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038096.3582096}
+{"type": "incoming", "chat_id": 1413555507, "text": "hello", "timestamp": 1785038115.9297292}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":0},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038124.0751083}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":0},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038124.077236}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 25% of 400?\nReply ONLY with\n{\"answer\":0,\"log_url\":\"...\"}", "timestamp": 1785038157.790533}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":100,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038163.0971322}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":100,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038163.0971322}
+{"type": "incoming", "chat_id": 1413555507, "text": "hello", "timestamp": 1785038171.6968343}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":0},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038184.2797801}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"prediction\":{\"value\":0},\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038184.288634}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 25% of 400?\nReply ONLY with\n{\"answer\":0,\"log_url\":\"...\"}", "timestamp": 1785038628.0439246}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":100,\"log_url\":\"...\"}", "timestamp": 1785038633.2822876}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":100,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038633.2822876}
+{"type": "incoming", "chat_id": 1413555507, "text": "hello", "timestamp": 1785038640.5440953}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":0,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038654.568348}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":0,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785038654.5705605}
+{"type": "incoming", "chat_id": 1413555507, "text": "hello", "timestamp": 1785039200.10846}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":0,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039210.3266857}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":0,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039210.3358426}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200?", "timestamp": 1785039255.8179748}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039261.4408178}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"answer\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039261.4487956}
+{"type": "incoming", "chat_id": 1413555507, "text": "What is 5% of 200? Reply ONLY with this JSON object and nothing else: {\"result\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039287.935902}
+{"type": "dataset_error", "chat_id": 1413555507, "error": "404 Client Error: Not Found for url: https://your-domain.com/logs/run.jsonl%22%7D", "timestamp": 1785039290.214435}
+{"type": "llm_response", "chat_id": 1413555507, "text": "{\"result\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039300.9621742}
+{"type": "outgoing", "chat_id": 1413555507, "text": "{\"result\":10,\"log_url\":\"https://your-domain.com/logs/run.jsonl\"}", "timestamp": 1785039300.9621742}
