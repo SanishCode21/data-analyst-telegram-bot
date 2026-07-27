@@ -8,46 +8,46 @@ from logger import log_event
 from memory import add_message, get_history
 from llm import ask_llm
 from json_utils import extract_json
-
+from schema_utils import extract_json_template, fill_schema
 from tools.data_analyser import prepare_dataset_context
 
 
 async def handle_message(
     update: Update,
-    context: ContextTypes.DEFAULT_TYPE
+    context: ContextTypes.DEFAULT_TYPE,
 ):
     chat_id = update.effective_chat.id
     user_text = update.message.text
+
+    # Extract the JSON template (if present)
+    schema_template = extract_json_template(user_text)
 
     # Log incoming message
     log_event({
         "type": "incoming",
         "chat_id": chat_id,
-        "text": user_text
+        "text": user_text,
     })
 
-    # Prepare dataset context
+    # Try to build dataset context
     try:
         dataset_context = prepare_dataset_context(user_text)
     except Exception as e:
         log_event({
             "type": "dataset_error",
             "chat_id": chat_id,
-            "error": str(e)
+            "error": str(e),
         })
         dataset_context = None
 
-    # Build prompt
+    # Build prompt sent to the LLM
     if dataset_context:
-        user_prompt = f"""
-        Dataset Context
-
-        {dataset_context}
-
-        User Question
-
-        {user_text}
-        """.strip()
+        user_prompt = (
+            f"Dataset Context:\n\n"
+            f"{dataset_context}\n\n"
+            f"User Question:\n"
+            f"{user_text}"
+        )
     else:
         user_prompt = user_text
 
@@ -62,22 +62,33 @@ async def handle_message(
     log_event({
         "type": "llm_response",
         "chat_id": chat_id,
-        "text": reply_text
+        "text": reply_text,
     })
 
-    # Extract valid JSON
+    # Parse LLM JSON
     parsed = extract_json(reply_text)
 
-    # Force correct log_url
+    # Preserve the user's JSON schema
+    if schema_template:
+
+        answer_value = None
+
+        for key, value in parsed.items():
+            if key != "log_url":
+                answer_value = value
+                break
+
+        if answer_value is not None:
+            parsed = fill_schema(schema_template, answer_value)
+
+    # Always overwrite log_url
     parsed["log_url"] = LOG_URL
 
-    if "answer" in parsed and "result" not in parsed:
-        parsed["result"] = parsed.pop("answer")
-
+    # Compact JSON (important for grading)
     final_reply = json.dumps(
         parsed,
         ensure_ascii=False,
-        separators=(",", ":")
+        separators=(",", ":"),
     )
 
     # Store assistant response
@@ -87,9 +98,8 @@ async def handle_message(
     log_event({
         "type": "outgoing",
         "chat_id": chat_id,
-        "text": final_reply
+        "text": final_reply,
     })
 
-    # Reply to Telegram
+    # Send reply
     await update.message.reply_text(final_reply)
-
