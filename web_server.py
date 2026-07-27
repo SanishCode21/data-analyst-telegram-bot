@@ -14,6 +14,11 @@ def health():
     return {"status": "ok"}
 
 
+@app.route("/favicon.ico")
+def favicon():
+    return "", 204
+
+
 def run_web_server():
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)

@@ -26,21 +26,20 @@ def start_bot():
         )
     )
 
-    print("Telegram Bot Started...")
+    print("Telegram bot started...")
 
-    app.run_polling()
+    app.run_polling(
+        stop_signals=None
+    )
 
 
 if __name__ == "__main__":
 
-    # Start Telegram bot in background thread
-    bot_thread = threading.Thread(
-        target=start_bot,
+    web_thread = threading.Thread(
+        target=run_web_server,
         daemon=True,
     )
 
-    bot_thread.start()
+    web_thread.start()
 
-    # Start Flask server (Render detects this port)
-    run_web_server()
-
+    start_bot()
