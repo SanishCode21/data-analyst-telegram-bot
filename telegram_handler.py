@@ -17,19 +17,27 @@ async def handle_message(
     context: ContextTypes.DEFAULT_TYPE,
 ):
     chat_id = update.effective_chat.id
-    user_text = update.message.text
+    user_text = update.message.text or ""
 
-    # Extract the JSON template (if present)
-    schema_template = extract_json_template(user_text)
-
-    # Log incoming message
+    # 1. Log incoming Telegram message
     log_event({
         "type": "incoming",
         "chat_id": chat_id,
         "text": user_text,
     })
 
-    # Try to build dataset context
+    # 2. Detect the JSON template requested by the user
+    try:
+        schema_template = extract_json_template(user_text)
+    except Exception as e:
+        log_event({
+            "type": "schema_detection_error",
+            "chat_id": chat_id,
+            "error": str(e),
+        })
+        schema_template = None
+
+    # 3. Detect/download/analyse public datasets if necessary
     try:
         dataset_context = prepare_dataset_context(user_text)
     except Exception as e:
@@ -40,24 +48,54 @@ async def handle_message(
         })
         dataset_context = None
 
-    # Build prompt sent to the LLM
+    # 4. Build the actual prompt for the LLM
     if dataset_context:
         user_prompt = (
-            f"Dataset Context:\n\n"
+            "Dataset Context:\n\n"
             f"{dataset_context}\n\n"
-            f"User Question:\n"
+            "User Question:\n"
             f"{user_text}"
         )
     else:
         user_prompt = user_text
 
-    # Store conversation
-    add_message(chat_id, "user", user_prompt)
+    # 5. Store user message in conversation memory
+    add_message(
+        chat_id,
+        "user",
+        user_prompt,
+    )
 
     history = get_history(chat_id)
 
-    # Ask the LLM
-    reply_text = ask_llm(history[-6:])
+    # 6. Ask the LLM
+    try:
+        reply_text = ask_llm(history[-6:])
+    except Exception as e:
+        log_event({
+            "type": "llm_error",
+            "chat_id": chat_id,
+            "error": str(e),
+        })
+
+        # Still return valid JSON to Telegram.
+        fallback_reply = json.dumps(
+            {
+                "answer": None,
+                "log_url": LOG_URL,
+            },
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+
+        log_event({
+            "type": "outgoing",
+            "chat_id": chat_id,
+            "text": fallback_reply,
+        })
+
+        await update.message.reply_text(fallback_reply)
+        return
 
     log_event({
         "type": "llm_response",
@@ -65,12 +103,46 @@ async def handle_message(
         "text": reply_text,
     })
 
-    # Parse LLM JSON
-    parsed = extract_json(reply_text)
+    # 7. Extract JSON from LLM response
+    try:
+        parsed = extract_json(reply_text)
 
-    # Preserve the user's JSON schema
+        if not isinstance(parsed, dict):
+            raise ValueError("LLM response is not a JSON object")
+
+    except Exception as e:
+        log_event({
+            "type": "json_error",
+            "chat_id": chat_id,
+            "error": str(e),
+            "llm_response": reply_text,
+        })
+
+        fallback_reply = json.dumps(
+            {
+                "answer": None,
+                "log_url": LOG_URL,
+            },
+            ensure_ascii=False,
+            separators=(",", ":"),
+        )
+
+        log_event({
+            "type": "outgoing",
+            "chat_id": chat_id,
+            "text": fallback_reply,
+        })
+
+        await update.message.reply_text(fallback_reply)
+        return
+
+    # 8. Preserve the exact JSON schema requested by the user
     if schema_template:
 
+        # Find the actual answer produced by the LLM.
+        #
+        # Ignore log_url because it is controlled by our application,
+        # not by the LLM.
         answer_value = None
 
         for key, value in parsed.items():
@@ -78,28 +150,62 @@ async def handle_message(
                 answer_value = value
                 break
 
-        if answer_value is not None:
-            parsed = fill_schema(schema_template, answer_value)
+        try:
+            if answer_value is not None:
+                parsed = fill_schema(
+                    schema_template,
+                    answer_value,
+                )
 
-    # Always overwrite log_url
-    parsed["log_url"] = LOG_URL
+        except Exception as e:
+            log_event({
+                "type": "schema_fill_error",
+                "chat_id": chat_id,
+                "error": str(e),
+                "schema": schema_template,
+                "answer_value": answer_value,
+            })
 
-    # Compact JSON (important for grading)
+    # 9. Force log_url to be the LAST key
+    #
+    # This avoids:
+    #
+    # {"log_url":"...", "result":30}
+    #
+    # and guarantees:
+    #
+    # {"result":30,"log_url":"..."}
+    #
+    # JSON key order is not semantically important, but this matches
+    # the assignment's documented output format.
+    final_parsed = {
+        key: value
+        for key, value in parsed.items()
+        if key != "log_url"
+    }
+
+    final_parsed["log_url"] = LOG_URL
+
+    # 10. Serialize as exactly ONE compact JSON object
     final_reply = json.dumps(
-        parsed,
+        final_parsed,
         ensure_ascii=False,
         separators=(",", ":"),
     )
 
-    # Store assistant response
-    add_message(chat_id, "assistant", final_reply)
+    # 11. Store assistant response in conversation memory
+    add_message(
+        chat_id,
+        "assistant",
+        final_reply,
+    )
 
-    # Log outgoing response
+    # 12. Log final outgoing response
     log_event({
         "type": "outgoing",
         "chat_id": chat_id,
         "text": final_reply,
     })
 
-    # Send reply
+    # 13. Send ONLY the JSON object to Telegram
     await update.message.reply_text(final_reply)
